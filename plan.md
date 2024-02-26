@@ -30,4 +30,18 @@
 ## Data Preprocessing
 ### Categorical Features
 1. Reformat duplicates to remove them
+
+### Text Features
+1. Use either the text columns with or without the stopwords
 2. Experiment with different ways of encoding the text data (e.g. BERT, word2vec)
+
+## Model
+1. Experiment with different models
+2. If a sequence model is used, should a classifier be trained on the rest of the data. If so, how two use the two outputs to decide on a final result
+
+---
+# Research Resources
+1. https://blog.paperspace.com/transformers-text-classification/#importing-the-essential-libraries
+2. https://huggingface.co/docs/transformers/tasks/sequence_classification
+3. https://www.nltk.org/index.html
+4. https://spacy.io/
