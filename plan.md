@@ -10,16 +10,16 @@
 5. There is a "hasImage" column
 
 ## Initial Analysis
-1. ~~Check for NaNs~~
-2. ~~Identify and count unique values for columns (to check for columns with different names): author, type~~
-3. ~~Check correlation of features with labels (e.g. if one authors is a prolific fraudster)~~
-4. ~~Check label imbalance~~
+1. [x] Check for NaNs
+2. [x] Identify and count unique values for columns (to check for columns with different names): author, type
+3. [x] Check correlation of features with labels (e.g. if one authors is a prolific fraudster)
+4. [x] Check label imbalance
 
 ## Text Data
-1. ~~Find out what the stop words are~~
-2. ~~Investigate NLP libraries (e.g. NLTK, SpaCy, Hugging Face Transformers)~~
-3. Find common words to see what the articles are about: "title" and "text"
-4. See if there are any terms that are more common in fake vs. real news articles
+1. [x] Find out what the stop words are
+2. [x] Investigate NLP libraries (e.g. NLTK, SpaCy, Hugging Face Transformers)
+3. [ ] Find common words to see what the articles are about: "title" and "text"
+4. [ ]See if there are any terms that are more common in fake vs. real news articles
 
 ## Time Series Data
 1. Investigate how fake articles vary with time
@@ -27,10 +27,10 @@
 
 # Data Cleaning
 1. Remove rows:
-  - ~~where language == "german"~~
-  - ~~where text or title are NULLs~~
+  - [x] where language == "german"
+  - [x] where text or title are NULLs
 2. Remove columns:
-  - ~~language, *_without_stopwords, etc.~~
+  - [x] language, *_without_stopwords, etc.
   - [x] at this point, just keep title and text
 
 # Experimenting
