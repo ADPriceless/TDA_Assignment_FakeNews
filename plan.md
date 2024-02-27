@@ -19,11 +19,11 @@
 1. [x] Find out what the stop words are
 2. [x] Investigate NLP libraries (e.g. NLTK, SpaCy, Hugging Face Transformers)
 3. [ ] Find common words to see what the articles are about: "title" and "text"
-4. [ ]See if there are any terms that are more common in fake vs. real news articles
+4. [ ] See if there are any terms that are more common in fake vs. real news articles
 
 ## Time Series Data
 1. Investigate how fake articles vary with time
-   - See if there are spikes around real-world events: using events found from text analysis, as well as researching dates where there are more fraudulent items
+   [ ] See if there are spikes around real-world events: using events found from text analysis, as well as researching dates where there are more fraudulent items
 
 # Data Cleaning
 1. Remove rows:

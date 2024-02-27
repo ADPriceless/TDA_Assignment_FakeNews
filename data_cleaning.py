@@ -43,8 +43,6 @@ def _map_rename_label(
     return df.rename(columns={old_label: new_label})
 
 
-
-
 if __name__ == '__main__':
     # clean the dataset
     df_clean = clean_data('data/news_articles (2).csv')
