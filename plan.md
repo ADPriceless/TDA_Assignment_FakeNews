@@ -10,21 +10,28 @@
 5. There is a "hasImage" column
 
 ## Initial Analysis
-1. Remove "language" column
-2. Check for NaNs
-3. Identify and count unique values for columns (to check for columns with different names): author, type 
-4. Check correlation of features with labels (e.g. if one authors is a prolific fraudster)
-5. Check label imbalance
+1. ~~Check for NaNs~~
+2. ~~Identify and count unique values for columns (to check for columns with different names): author, type ~~
+3. ~~Check correlation of features with labels (e.g. if one authors is a prolific fraudster)~~
+4. ~~Check label imbalance~~
 
 ## Text Data
-1. Find out what the stop words are 
-2. Investigate NLP libraries (e.g. NLTK, SpaCy, Hugging Face Transformers)
+1. ~~Find out what the stop words are ~~
+2. ~~Investigate NLP libraries (e.g. NLTK, SpaCy, Hugging Face Transformers)~~
 3. Find common words to see what the articles are about: "title" and "text"
 4. See if there are any terms that are more common in fake vs. real news articles
 
 ## Time Series Data
 1. Investigate how fake articles vary with time
    - See if there are spikes around real-world events: using events found from text analysis, as well as researching dates where there are more fraudulent items
+
+# Data Cleaning
+1. Remove rows:
+  - where language == "german"
+  - where text or title are NULLs
+2. Remove columns:
+  - language, *_without_stopwords, etc.
+  - at this point, just keep title and text
 
 # Experimenting
 ## Data Preprocessing
