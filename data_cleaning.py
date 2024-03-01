@@ -5,6 +5,8 @@
 preprocess for a model"""
 
 
+import os
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -14,11 +16,11 @@ def clean_data(file_path: str) -> pd.DataFrame:
     df = _read_data(file_path)
     # remove German articles
     df = _drop_rows(df, 'language', 'german')
-    df = _keep_columns(df, ['title', 'text', 'label'])
+    df = _keep_columns(df, ['text', 'label'])
     df = _drop_null(df)
-    df = _remove_newline_characters(df, 'title')
+    # df = _remove_newline_characters(df, 'title')
     df = _remove_newline_characters(df, 'text')
-    df = _combine_columns(df, ['title', 'text'], 'text')
+    # df = _combine_columns(df, ['title', 'text'], 'text')
     df = _map_rename_label(df, 'label', 'is_fake', {'Real': 0, 'Fake': 1})
     return df
 
@@ -76,12 +78,37 @@ def save_dataset(df: pd.DataFrame, file_path: str) -> None:
     df.to_csv(file_path, index=False)
 
 
+def save_text(df: pd.DataFrame, dir_path: str, column: str, label_col: str) -> None:
+    """Save text from df in a structure that 
+    `keras.utils.text_dataset_from_directory` can use"""
+    # save each row in its own file, in a directory named after the label
+    for index, row in df.iterrows():
+        label_dir = f'{label_col}_{row[label_col]}'
+        if not os.path.exists(os.path.join(dir_path, label_dir)):
+            os.makedirs(os.path.join(dir_path, label_dir))
+        text = row[column]
+        file_name = f'{index}.txt'
+        file_path_full = os.path.join(dir_path, label_dir, file_name)
+        with open(file_path_full, 'w', encoding='utf-8') as f:
+            f.write(text)
+
+
 if __name__ == '__main__':
     # clean the dataset
     df_clean = clean_data('data/news_articles (2).csv')
+
     # split into train and test
     df_train, df_test = split_into_test_and_train_datasets(df_clean)
+
     # save the clean, train and test datasets
-    save_dataset(df_clean, 'data/news_articles_clean.csv')
-    save_dataset(df_train, 'data/train.csv')
-    save_dataset(df_test, 'data/test.csv')
+    # save_dataset(df_clean, 'data/news_articles_clean.csv')
+    # save_dataset(df_train, 'data/train.csv')
+    # save_dataset(df_test, 'data/test.csv')
+
+    # title and text
+    # save_text(df_train, 'data/train', 'text', 'is_fake')
+    # save_text(df_test, 'data/test', 'text', 'is_fake')
+
+    # text only
+    save_text(df_train, 'data/text_only/train', 'text', 'is_fake')
+    save_text(df_test, 'data/text_only/test', 'text', 'is_fake')
